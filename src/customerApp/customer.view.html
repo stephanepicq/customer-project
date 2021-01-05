@@ -1,0 +1,26 @@
+<div class="text-align:center">
+
+  <span>{{ title }} app is running!</span><br>
+
+  Customer id:<input type="text" [(ngModel)]="customerModel.id"><br>
+  Customer name:<input type="text" [(ngModel)]="customerModel.name"><br>
+  Customer amount:<input type="number" [(ngModel)]="customerModel.amount"><br>
+
+  <input type="button" value="Add" (click)="Add()">
+
+  {{customerModel.id}}<br>
+  {{customerModel.name}}<br>
+  {{customerModel.amount}}<br>
+
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Amount</th>
+  </tr>
+  <tr *ngFor='let customer of customerModels'>
+    <td>{{customer.id}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.amount}}</td>
+  </tr>
+
+</div>
