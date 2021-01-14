@@ -1,0 +1,46 @@
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<div style="text-align:center">
+  <h1>Customer</h1>
+  Id: <input type="text" [(ngModel)]="customer.id"><br>
+  Name: <input type="text" [(ngModel)]="customer.name"><br>
+  Value: <input type="number" [(ngModel)]="customer.value"><br>
+
+  <table style="align-self: center;">
+    <tr>
+      <td style="width: 40%;">{{customer.id}}</td>
+      <td style="width: 40%;">{{customer.name}}</td>
+      <td style="width: 20%;">{{customer.value}}</td>
+    </tr>
+  </table><br>
+
+  <input type="button" (click)="Add()" value="Add"><br>
+
+
+  <table style="text-align:center;">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>value</th>
+    </tr>
+    <tr *ngFor="let customer of customers;">
+      <td>{{customer.id}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.value}}</td>
+    </tr>
+  </table>
+
+</div>
