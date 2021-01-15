@@ -15,20 +15,26 @@
 
 <div style="text-align:center">
   <h1>Customer</h1>
-  Id: <input type="text" [(ngModel)]="customer.id"><br>
-  Name: <input type="text" [(ngModel)]="customer.name"><br>
-  Value: <input type="number" [(ngModel)]="customer.value"><br>
+  <form [formGroup]="customerModel.formGroup">
+    Id: <input formControlName="idControl" type="text" [(ngModel)]="customerModel.id"><br>
+    Name: <input formControlName="nameControl" type="text" [(ngModel)]="customerModel.name"><br>
+    Value: <input type="number" [(ngModel)]="customerModel.value" [ngModelOptions]="{standalone: true}"><br>
+
+    <input [disabled]="!(customerModel.formGroup.valid)" type="button" (click)="add()" value="Add"><br>
+  </form>
+
+  <div *ngIf="dirty('idControl')" [hidden]="!hasError('idControl','required')">id cannot be empty</div><br>
+  <div *ngIf="dirty('idControl')" [hidden]="!hasError('idControl','pattern')">id must have 4 numberics</div><br>
+  <div *ngIf="dirty('nameControl')" [hidden]="!hasError('nameControl','required')">name cannot be empty</div><br>
+
 
   <table style="align-self: center;">
     <tr>
-      <td style="width: 40%;">{{customer.id}}</td>
-      <td style="width: 40%;">{{customer.name}}</td>
-      <td style="width: 20%;">{{customer.value}}</td>
+      <td style="width: 40%;">{{customerModel.id}}</td>
+      <td style="width: 40%;">{{customerModel.name}}</td>
+      <td style="width: 20%;">{{customerModel.value}}</td>
     </tr>
   </table><br>
-
-  <input type="button" (click)="Add()" value="Add"><br>
-
 
   <table style="text-align:center;">
     <tr>
