@@ -1,20 +1,20 @@
 export interface ILogger {
-    log(): void;
+    log(message: string): void;
 };
 
 export class ParentLogger implements ILogger {
-    log() {
+    log(message: string) {
     }
 };
 
 export class ConsoleLogger extends ParentLogger {
-    log() {
-        console.log("Write a message in Console");
+    log(message: string) {
+        console.log("Log in console: " + message);
     }
 }
 
 export class DBLogger extends ParentLogger {
-    log() {
-        console.log("Write a message in DB");
+    log(message: string) {
+        console.log("Log in DB: " + message);
     }
 }

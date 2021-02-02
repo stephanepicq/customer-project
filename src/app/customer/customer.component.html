@@ -20,7 +20,9 @@
     Name: <input formControlName="nameControl" type="text" [(ngModel)]="customerModel.name"><br>
     Value: <input type="number" [(ngModel)]="customerModel.value" [ngModelOptions]="{standalone: true}"><br>
 
-    <input [disabled]="!(customerModel.formGroup.valid)" type="button" (click)="add()" value="Add"><br>
+    <!-- <input [disabled]="!(customerModel.formGroup.valid)" type="button" (click)="add()" value="Add"><br> -->
+
+    <input [disabled]="!(customerModel.formGroup.valid) || requestOnGoing" type="button" value="Send to server" (click)="saveCustomer()"/><br>
   </form>
 
   <div *ngIf="dirty('codeControl')" [hidden]="!hasError('codeControl','required')">code cannot be empty</div><br>
@@ -36,7 +38,7 @@
     </tr>
   </table><br>
 
-  <grid-ui [grid-columns]='[{"name": "code"}, {"name": "name"}, {"name": "values"}]' [grid-data]="customers"
-    (select-data)="selectData($event)"></grid-ui>
+  <grid-ui [grid-columns]='[{"name": "code"}, {"name": "name"}, {"name": "value"}]' [grid-data]="customers"
+    (select-data)="selectData($event)" (delete-data)="deleteData($event)"></grid-ui>
 
 </div>

@@ -26,4 +26,12 @@ export class GridTableComponent {
     selectData(_data: Object) {
         this.eventEmitter.emit(_data);
     }
+
+    @Output("delete-data")
+    eventEmitter2: EventEmitter<Object> = new EventEmitter<Object>();
+
+    deleteData(_data: Object) {
+        this.eventEmitter2.emit(_data);
+    }
+
 }

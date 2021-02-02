@@ -10,7 +10,7 @@ export class HomeComponent {
 
   constructor(_injector: Injector) {
     this.logger = _injector.get("logger");
-    this.logger.log();
+    this.logger.log("Toto");
   }
 
 }

@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 export class CustomerModel {
+  id: number;
   code: string = "";
   name: string = "";
   value: number = 0;
