@@ -1,0 +1,30 @@
+<style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  
+    table {
+      border-collapse: collapse;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+<table>
+    <tr>
+        <th *ngFor="let column of columns">{{column.name}}</th>
+    </tr>
+    <tr *ngFor="let dat of data">
+        <td *ngFor="let column of columns">
+            {{dat[column.name]}}
+        </td>
+        <td>
+            <!-- <a (click)="selectData(dat)" [routerLink]="['/Customer/']">select</a> -->
+            <input type="button" (click)="selectData(dat)" value="Boom"/>
+        </td>
+    </tr>
+</table>
+

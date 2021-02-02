@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { ParentLogger } from '../logger/logger';
+import { ParentLogger } from '../util/logger';
 
 @Component({
   templateUrl: './home.component.html'

@@ -16,37 +16,27 @@
 <div style="text-align:center">
   <h1>Customer</h1>
   <form [formGroup]="customerModel.formGroup">
-    Id: <input formControlName="idControl" type="text" [(ngModel)]="customerModel.id"><br>
+    Id: <input formControlName="codeControl" type="text" [(ngModel)]="customerModel.code"><br>
     Name: <input formControlName="nameControl" type="text" [(ngModel)]="customerModel.name"><br>
     Value: <input type="number" [(ngModel)]="customerModel.value" [ngModelOptions]="{standalone: true}"><br>
 
     <input [disabled]="!(customerModel.formGroup.valid)" type="button" (click)="add()" value="Add"><br>
   </form>
 
-  <div *ngIf="dirty('idControl')" [hidden]="!hasError('idControl','required')">id cannot be empty</div><br>
-  <div *ngIf="dirty('idControl')" [hidden]="!hasError('idControl','pattern')">id must have 4 numberics</div><br>
+  <div *ngIf="dirty('codeControl')" [hidden]="!hasError('codeControl','required')">code cannot be empty</div><br>
+  <div *ngIf="dirty('codeControl')" [hidden]="!hasError('codeControl','pattern')">code must have 4 numberics</div><br>
   <div *ngIf="dirty('nameControl')" [hidden]="!hasError('nameControl','required')">name cannot be empty</div><br>
 
 
   <table style="align-self: center;">
     <tr>
-      <td style="width: 40%;">{{customerModel.id}}</td>
+      <td style="width: 40%;">{{customerModel.code}}</td>
       <td style="width: 40%;">{{customerModel.name}}</td>
       <td style="width: 20%;">{{customerModel.value}}</td>
     </tr>
   </table><br>
 
-  <table style="text-align:center;">
-    <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>value</th>
-    </tr>
-    <tr *ngFor="let customer of customers;">
-      <td>{{customer.id}}</td>
-      <td>{{customer.name}}</td>
-      <td>{{customer.value}}</td>
-    </tr>
-  </table>
+  <grid-ui [grid-columns]='[{"name": "code"}, {"name": "name"}, {"name": "values"}]' [grid-data]="customers"
+    (select-data)="selectData($event)"></grid-ui>
 
 </div>

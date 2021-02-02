@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { ParentLogger } from '../logger/logger';
+import { ParentLogger } from '../util/logger';
 import { CustomerModel } from './customer.model';
 
 @Component({
@@ -10,7 +10,7 @@ export class CustomerComponent {
   customers: Array<CustomerModel> = new Array<CustomerModel>();
   logger: ParentLogger = null;
 
-  constructor( injector: Injector) {
+  constructor(injector: Injector) {
     this.logger = injector.get("logger");
     var logger2 = injector.get("logger2");
     logger2.log();
@@ -20,6 +20,10 @@ export class CustomerComponent {
     this.customers.push(this.customerModel);
     this.customerModel = new CustomerModel();
     this.logger.log();
+  }
+
+  selectData(_customerModel: CustomerModel) {
+    this.customerModel = _customerModel;
   }
 
   hasError(control: string, type: string): boolean {
